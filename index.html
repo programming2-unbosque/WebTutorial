@@ -10,7 +10,7 @@
 
 		<p>Este es el formulario que debe diligenciar para registrar una nueva mascota</p>
 
-		Fecha de registro: <input type="date" />
+		Fecha de registro: <input id="date-input" type="date" />
 		<br />
 		Nombre de del propietario: <input type="text" />
 		<br />
@@ -29,21 +29,26 @@
 			<option>Mediano</option>
 			<option>Grande</option>
 		</select>
+		<br />
+		<input type="button" value="Guardar" />
+		<input type="button" value="Limpiar" />
 
-		<br /><br />
+		<br /><br /><br /><br />
 
 		<table>
 			<thead>
-				<th>Fecha de registro</th>
-				<th>Nombre del propietario</th>
-				<th>Nombre de la mascota</th>
-				<th>Edad</th>
-				<th>Especie</th>
-				<th>Tamaño</th>
-				<th>Acciones</th>
+				<th class="column-header column-header-id">ID</th>
+				<th class="column-header">Fecha de registro</th>
+				<th class="column-header">Nombre del propietario</th>
+				<th class="column-header">Nombre de la mascota</th>
+				<th class="column-header">Edad</th>
+				<th class="column-header">Especie</th>
+				<th class="column-header">Tamaño</th>
+				<th class="column-header">Acciones</th>
 			</thead>
 			<tbody>
 				<tr>
+					<td>1</td>
 					<td>2021-08-24</td>
 					<td>Pepito Perez</td>
 					<td>Max</td>
@@ -58,6 +63,35 @@
 			</tbody>
 		</table>
 		
+		<script>
+			var i = true;
+
+			var student = {
+				name: "Pepito Perez",
+				age: 25,
+				faculty: "Systems",
+				active: true,
+				sayHello: function() {
+					console.log("Hello, my name is ", this.name);
+				},
+				sayHelloWithArrow: () => {
+					let message = "Hello, world!";
+					console.log(message);
+				}
+			};
+
+			var printMessage = function (i = false) {
+				if(i) {
+					console.log("Hello world!");
+				} else {
+					console.log("Good bye!");
+				}	
+			}
+
+			//printMessage();
+
+			
+		</script>
 
 	</body>	
 </html>

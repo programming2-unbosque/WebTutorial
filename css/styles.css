@@ -9,3 +9,15 @@ th {
 	border-color: orange;
 	padding: 5px;
 }
+
+th.column-header {
+	color: red;
+}
+
+th.column-header-id {
+	font-size: 30px;
+}
+
+#date-input {
+	font-weight: bold;
+}
