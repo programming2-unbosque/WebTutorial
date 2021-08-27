@@ -2,6 +2,7 @@
 	<head>
 		<title>Ciudadanos de 4 Patas</title>
 
+		<!-- Stylesheets -->
 		<link rel="stylesheet" href="./css/styles.css" />
 	</head>
 	<body>
@@ -12,26 +13,26 @@
 
 		Fecha de registro: <input id="date-input" type="date" />
 		<br />
-		Nombre de del propietario: <input type="text" />
+		Nombre de del propietario: <input id="owner-input" type="text" />
 		<br />
-		Nombre de la mascota: <input type="text" />
+		Nombre de la mascota: <input id="petname-input" type="text" />
 		<br />
-		Edad de la mascota: <input type="number" min="0" />
+		Edad de la mascota: <input id="petage-input" type="number" min="0" />
 		<br />
-		Especie: <select>
+		Especie: <select id="petspecies-input">
 			<option>Perro</option>
 			<option>Gato</option>	
 		</select>
 		<br />
-		Tamaño: <select>
+		Tamaño: <select id="petsize-input">
 			<option>Miniatura</option>
 			<option>Pequeño</option>
 			<option>Mediano</option>
 			<option>Grande</option>
 		</select>
 		<br />
-		<input type="button" value="Guardar" />
-		<input type="button" value="Limpiar" />
+		<input id="petsave-button" type="button" value="Guardar" />
+		<input id="petclean-button" type="button" value="Limpiar" />
 
 		<br /><br /><br /><br />
 
@@ -46,8 +47,8 @@
 				<th class="column-header">Tamaño</th>
 				<th class="column-header">Acciones</th>
 			</thead>
-			<tbody>
-				<tr>
+			<tbody id="body-table">
+				<!--<tr>
 					<td>1</td>
 					<td>2021-08-24</td>
 					<td>Pepito Perez</td>
@@ -56,42 +57,13 @@
 					<td>Perro</td>
 					<td>Mediano</td>
 					<td>
-						<input type="button" value="Editar" />
 						<input type="button" value="Eliminar" />
 					</td>
-				</tr>
+				</tr>-->
 			</tbody>
 		</table>
-		
-		<script>
-			var i = true;
 
-			var student = {
-				name: "Pepito Perez",
-				age: 25,
-				faculty: "Systems",
-				active: true,
-				sayHello: function() {
-					console.log("Hello, my name is ", this.name);
-				},
-				sayHelloWithArrow: () => {
-					let message = "Hello, world!";
-					console.log(message);
-				}
-			};
-
-			var printMessage = function (i = false) {
-				if(i) {
-					console.log("Hello world!");
-				} else {
-					console.log("Good bye!");
-				}	
-			}
-
-			//printMessage();
-
-			
-		</script>
-
+		<!-- Scripts -->
+		<script src="./js/main.js"></script>
 	</body>	
 </html>

@@ -1,3 +1,7 @@
+/*
+ * Table styles 
+*/
+
 table {
 	border: 1px solid;
 	border-collapse: collapse;
@@ -17,6 +21,10 @@ th.column-header {
 th.column-header-id {
 	font-size: 30px;
 }
+
+/*
+ * Form styles 
+*/
 
 #date-input {
 	font-weight: bold;
