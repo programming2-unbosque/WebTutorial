@@ -11,7 +11,7 @@ document.getElementById("petsave-button").onclick = function () {
 		petAgeInput: +document.getElementById("petage-input").value,
 		petSpeciesInput: document.getElementById("petspecies-input").value,
 		petSizeInput: document.getElementById("petsize-input").value,
-	}
+	};
 
 	let tr = document.createElement("tr");
 	tr.setAttribute("id", "row-" + rowId);
@@ -41,8 +41,6 @@ document.getElementById("petsave-button").onclick = function () {
 		id = +id.replace("delete-", "");
 
 		document.getElementById("row-" + id).remove();
-
-
 	};
 
 	tdActions.appendChild(input);
@@ -53,42 +51,11 @@ document.getElementById("petsave-button").onclick = function () {
 
 };
 
+document.getElementById("show-image").onclick = function () {
 
+	fetch('https://dog.ceo/api/breeds/image/random')
+		.then(response => response.json())
+		.then(data => console.log(data));
 
-
-
-
-
-
-
-
-
-
-
-
-
-/*var i = true;
-
-var student = {
-	name: "Pepito Perez",
-	age: 25,
-	faculty: "Systems",
-	active: true,
-	sayHello: function() {
-		console.log("Hello, my name is ", this.name);
-	},
-	sayHelloWithArrow: () => {
-		let message = "Hello, world!";
-		console.log(message);
-	}
 };
 
-var printMessage = function (i = false) {
-	if(i) {
-		console.log("Hello world!");
-	} else {
-		console.log("Good bye!");
-	}	
-}
-
-printMessage();*/
