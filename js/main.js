@@ -51,11 +51,29 @@ document.getElementById("petsave-button").onclick = function () {
 
 };
 
+fetch('https://dog.ceo/api/breeds/list/all')
+	.then(response => response.json())
+	.then(data => {
+		
+		let petBreed = document.getElementById("petbreed-input");
+
+		Object.keys(data.message).map((breed) => {
+			let option = document.createElement("option");
+			option.innerHTML = breed;
+			petBreed.appendChild(option);
+
+		});
+	});
+
 document.getElementById("show-image").onclick = function () {
 
-	fetch('https://dog.ceo/api/breeds/image/random')
+	let breed = document.getElementById("petbreed-input").value;
+
+	fetch('https://dog.ceo/api/breed/' + breed + '/images/random')
 		.then(response => response.json())
-		.then(data => console.log(data));
+		.then(data => {
+			document.getElementById("pet-image").setAttribute("src", data.message);
+		});
 
 };
 
