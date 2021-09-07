@@ -2,6 +2,31 @@
 var rowId = 0;
 var catBreeds = [];
 
+var indexedDB = window.indexedDB || window.mozIndexedDB || window.webkitIndexedDB || window.msIndexedDB || window.shimIndexedDB;
+const dbName = "petDB";
+
+var request = indexedDB.open(dbName, 2);
+
+request.onerror = function(event) {
+  console.log("Database error");
+};
+request.onupgradeneeded = function(event) {
+  var db = event.target.result;
+  var objectStore = db.createObjectStore("pets", { keyPath: "id" });
+  objectStore.createIndex("petNameInput", "petNameInput", { unique: false });
+};
+
+var request = indexedDB.open(dbName, 2);
+request.onsuccess = function(event) {
+	var db = event.target.result;
+	var tx = db.transaction("pets");
+	var objectStore = tx.objectStore("pets");
+	objectStore.getAll().onsuccess = function(event) {
+	  console.log(event.target.result);
+	  rowId = event.target.result.length;
+	};
+};
+
 document.getElementById("petsave-button").onclick = function () {
 	rowId += 1;
 
@@ -12,7 +37,17 @@ document.getElementById("petsave-button").onclick = function () {
 		petAgeInput: +document.getElementById("petage-input").value,
 		petSpeciesInput: document.getElementById("petspecies-input").value,
 		petSizeInput: document.getElementById("petsize-input").value,
-	};
+	};  
+
+    var request = indexedDB.open(dbName, 2);
+ 	request.onsuccess = function(event) {
+    	var db = event.target.result;
+    	var customerObjectStore = db.transaction("pets", "readwrite").objectStore("pets");
+	    pet["id"] = rowId;
+	    customerObjectStore.add(pet);
+  	};
+
+    // showing the pet record in table using DOM API
 
 	let tr = document.createElement("tr");
 	tr.setAttribute("id", "row-" + rowId);
@@ -109,6 +144,10 @@ fetch('https://api.thecatapi.com/v1/breeds')
 			catBreed.appendChild(option);
 
 		});
+
+		// Updating select value based on cookie
+		let myLocalStorage = window.localStorage;
+		document.getElementById("catbreed-input").value = myLocalStorage.getItem("catBreed");
 		
 	});
 
@@ -135,6 +174,15 @@ document.getElementById("dogbreed-input").onchange = function () {
 	let dogBreed = document.getElementById("dogbreed-input").value;
 	console.log(dogBreed);
 	document.cookie = "dogBreed=" + dogBreed;
+
+};
+
+document.getElementById("catbreed-input").onchange = function () {
+
+	let catBreed = document.getElementById("catbreed-input").value;
+	console.log(catBreed);
+	let myLocalStorage = window.localStorage;
+	myLocalStorage.setItem('catBreed', catBreed);
 
 };
 
